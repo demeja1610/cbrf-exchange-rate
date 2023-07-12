@@ -1,6 +1,6 @@
 <?php
 
-namespace Demeja1610\ExchangeRate;
+namespace Demeja1610\CBRFExchangeRate;
 
 use DateTime;
 use SoapClient;
