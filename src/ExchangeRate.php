@@ -1,35 +1,19 @@
 <?php
 
-namespace CentralBankRussian\ExchangeRate;
+namespace Demeja16\ExchangeRate;
 
-use CentralBankRussian\ExchangeRate\Exceptions\ExceptionIncorrectData;
-use CentralBankRussian\ExchangeRate\Exceptions\ExceptionInvalidParameter;
+use Demeja16\CBRFExchangeRate\Exceptions\ExceptionIncorrectData;
+use Demeja16\CBRFExchangeRate\Exceptions\ExceptionInvalidParameter;
 use DateTime;
-use CentralBankRussian\ExchangeRate\Collections\CurrencyRateCollection;
-use CentralBankRussian\ExchangeRate\Models\CurrencyRate;
+use Demeja16\CBRFExchangeRate\Collections\CurrencyRateCollection;
+use Demeja16\CBRFExchangeRate\Models\CurrencyRate;
 use SimpleXMLElement;
 
-/**
- * Class ExchangeRate
- * @package Drandin\ExchangeRate
- */
 final class ExchangeRate
 {
-    /**
-     * @var CBRClient
-     */
-    private $CBRClient;
+    private CBRClient $CBRClient;
+    private DateTime $date;
 
-    /**
-     * @var DateTime
-     */
-    private $date;
-
-    /**
-     * ExchangeRate constructor.
-     *
-     * @param CBRClient $CBRClient
-     */
     public function __construct(CBRClient $CBRClient)
     {
         $this->CBRClient = $CBRClient;
@@ -39,7 +23,6 @@ final class ExchangeRate
     /**
      * Возвращает коллекцию кусов валют
      *
-     * @return CurrencyRateCollection
      * @throws ExceptionIncorrectData|Exceptions\ExceptionInvalidParameter
      */
     public function getCurrencyExchangeRates(): CurrencyRateCollection
@@ -61,7 +44,6 @@ final class ExchangeRate
         $currencyRateCollection = new CurrencyRateCollection();
 
         foreach ($list as $rate) {
-
             /**
              * Название свойств объекта $rate
              *
@@ -88,7 +70,6 @@ final class ExchangeRate
                 ->setSymbolCode($symbolCode);
 
             $currencyRateCollection->add($currencyRate);
-
         }
 
         $currencyRateCollection->add($this->rub());
@@ -96,20 +77,13 @@ final class ExchangeRate
         return $currencyRateCollection;
     }
 
-    /**
-     * @param DateTime $date
-     * @return $this
-     */
-    public function setDate(DateTime $date)
+    public function setDate(DateTime $date): self
     {
         $this->date = $date;
+
         return $this;
     }
 
-    /**
-     * @param SimpleXMLElement $rate
-     * @return bool
-     */
     private function checkCurrencyRate(SimpleXMLElement $rate): bool
     {
         return !empty($rate->VchCode)
@@ -119,7 +93,6 @@ final class ExchangeRate
     }
 
     /**
-     * @return CurrencyRate
      * @throws ExceptionInvalidParameter
      */
     private function rub(): CurrencyRate
@@ -135,11 +108,9 @@ final class ExchangeRate
     /**
      * Возвращает курс обмена валюты в рублях.
      *
-     * @param string $symbolCode
-     * @return float
      * @throws ExceptionIncorrectData|ExceptionInvalidParameter
      */
-    public function getRateInRubles(string $symbolCode)
+    public function getRateInRubles(string $symbolCode): float
     {
         $symbolCode = strtoupper($symbolCode);
 
@@ -153,8 +124,6 @@ final class ExchangeRate
 
         $value = $currencyRate->rateOneUnitInRubles();
 
-        return (float) number_format($value, 4, '.','');
+        return (float) number_format($value, 4, '.', '');
     }
-
-
 }

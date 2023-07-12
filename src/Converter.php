@@ -1,82 +1,50 @@
 <?php
 
-namespace CentralBankRussian\ExchangeRate;
+namespace Demeja16\ExchangeRate;
 
-use CentralBankRussian\ExchangeRate\Exceptions\ExceptionIncorrectData;
-use CentralBankRussian\ExchangeRate\Exceptions\ExceptionInvalidParameter;
+use Demeja16\CBRFExchangeRate\Exceptions\ExceptionIncorrectData;
+use Demeja16\CBRFExchangeRate\Exceptions\ExceptionInvalidParameter;
 use DateTime;
 
-/**
- * Class Converter
- * @package CentralBankRussian\ExchangeRate
- */
 final class Converter
 {
-    /**
-     * @var DateTime
-     */
-    private $date;
+    private DateTime $date;
+    private ExchangeRate $exchangeRate;
+    private int $precision = 2;
 
-    /**
-     * @var ExchangeRate
-     */
-    private $exchangeRate;
-
-    /**
-     * @var int
-     */
-    private $precision = 2;
-
-    /**
-     * Converter constructor.
-     *
-     * @param ExchangeRate $exchangeRate
-     */
     public function __construct(ExchangeRate $exchangeRate)
     {
         $this->exchangeRate = $exchangeRate;
         $this->date = new DateTime();
     }
 
-    /**
-     * @return DateTime
-     */
     public function getDate(): DateTime
     {
         return $this->date;
     }
 
-    /**
-     * @param DateTime $date
-     * @return Converter
-     */
     public function setDate(DateTime $date): Converter
     {
         $this->date = $date;
+
         return $this;
     }
 
     /**
-     * @param int $precision
-     * @return $this
      * @throws ExceptionInvalidParameter
      */
-    public function setPrecision(int $precision): Converter
+    public function setPrecision(int $precision): self
     {
         if ($precision <= 0) {
             throw new ExceptionInvalidParameter('Precision must be greater than zero.');
         }
 
         $this->precision = $precision;
+
         return $this;
     }
 
-
     /**
-     * @param float $val
-     * @param string $symbolCodeFrom
-     * @param string $symbolCodeTo
-     * @return float
      * @throws ExceptionIncorrectData
      * @throws ExceptionInvalidParameter
      */
@@ -105,7 +73,7 @@ final class Converter
 
         if ($currencyRateFrom === null) {
             throw new ExceptionInvalidParameter(
-                'Could not find data for the currency code: '.$currencyRateFrom . '.'
+                'Could not find data for the currency code: ' . $currencyRateFrom . '.'
             );
         }
 
@@ -113,7 +81,7 @@ final class Converter
 
         if ($currencyRateTo === null) {
             throw new ExceptionInvalidParameter(
-                'Could not find data for the currency code: '.$currencyRateTo . '.'
+                'Could not find data for the currency code: ' . $currencyRateTo . '.'
             );
         }
 
@@ -125,8 +93,4 @@ final class Converter
 
         return round($res, $this->precision);
     }
-
-
-
-
 }

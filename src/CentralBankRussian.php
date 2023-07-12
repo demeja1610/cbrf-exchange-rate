@@ -1,11 +1,7 @@
 <?php
 
-namespace CentralBankRussian\ExchangeRate;
+namespace Demeja16\ExchangeRate;
 
-/**
- * Class CentralBankRussian
- * @package Drandin\ExchangeRate
- */
 abstract class CentralBankRussian
 {
     public const WSDL = 'https://www.cbr.ru/DailyInfoWebServ/DailyInfo.asmx?WSDL';

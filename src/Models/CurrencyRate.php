@@ -1,105 +1,45 @@
 <?php
 
-namespace CentralBankRussian\ExchangeRate\Models;
+namespace Demeja16\CBRFExchangeRate\Models;
 
-use CentralBankRussian\ExchangeRate\Exceptions\ExceptionInvalidParameter;
+use Demeja16\CBRFExchangeRate\Exceptions\ExceptionInvalidParameter;
 
-/**
- * Class CurrencyRate
- * @package Drandin\ExchangeRate\Models
- */
 final class CurrencyRate
 {
-    /**
-     * @var string
-     */
-    private $name = '';
+    private string $name = '';
+    private float $exchangeRate = 1;
+    private int $quantity = 1;
+    private string $numericCode = '';
+    private string $symbolCode = '';
 
-    /**
-     * Обменный курс валюты
-     * в количестве $this->$quantity в рублях
-     *
-     * @var float
-     */
-    private $exchangeRate = 1;
-
-    /**
-     * Количество (номинал)
-     *
-     * @var int
-     */
-    private $quantity = 1;
-
-    /**
-     * ISO Цифровой код валюты
-     *
-     * @var string
-     */
-    private $numericCode = '';
-
-    /**
-     * ISO Символьный код валюты
-     *
-     * @var string
-     */
-    private $symbolCode = '';
-
-    /**
-     * @return string
-     */
     public function getName(): string
     {
         return $this->name;
     }
 
-    /**
-     * Название валюты
-     *
-     * @param string $name
-     * @return CurrencyRate
-     */
-    public function setName(string $name): CurrencyRate
+    public function setName(string $name): self
     {
         $this->name = $this->cleaner($name);
         return $this;
     }
 
-    /**
-     * @return float
-     */
     public function getExchangeRate(): float
     {
         return $this->exchangeRate;
     }
 
-    /**
-     * Курс валюты
-     *
-     * @param float $exchangeRate
-     * @return CurrencyRate
-     */
-    public function setExchangeRate(float $exchangeRate): CurrencyRate
+    public function setExchangeRate(float $exchangeRate): self
     {
         $this->exchangeRate = $exchangeRate;
         return $this;
     }
 
-    /**
-     * @return int
-     */
     public function getQuantity(): int
     {
         return $this->quantity;
     }
 
-    /**
-     * Количество (номинал)
-     *
-     * @param int $quantity
-     * @return CurrencyRate
-     * @throws ExceptionInvalidParameter
-     */
-    public function setQuantity(int $quantity): CurrencyRate
+    public function setQuantity(int $quantity): self
     {
         if ($quantity <= 0) {
             throw new ExceptionInvalidParameter('The quantity cannot be negative.');
@@ -109,41 +49,23 @@ final class CurrencyRate
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getNumericCode(): string
     {
         return $this->numericCode;
     }
 
-    /**
-     * ISO Цифровой код валюты
-     *
-     * @param string $numericCode
-     * @return CurrencyRate
-     */
-    public function setNumericCode(string $numericCode): CurrencyRate
+    public function setNumericCode(string $numericCode): self
     {
         $this->numericCode = $this->cleaner($numericCode);
         return $this;
     }
 
-    /**
-     * @return string
-     */
     public function getSymbolCode(): string
     {
         return $this->symbolCode;
     }
 
-    /**
-     * ISO Символьный код валюты
-     *
-     * @param string $symbolCode
-     * @return CurrencyRate
-     */
-    public function setSymbolCode(string $symbolCode): CurrencyRate
+    public function setSymbolCode(string $symbolCode): self
     {
         $this->symbolCode = $this->cleaner($symbolCode);
         return $this;
@@ -152,23 +74,15 @@ final class CurrencyRate
 
     /**
      * Возвращает курс обмена валюты в рублях.
-     *
-     * @return float
      */
     public function rateOneUnitInRubles(): float
     {
         $value = ($this->getExchangeRate() / $this->getQuantity());
-        return (float) number_format($value, 4, '.','');
+        return (float) number_format($value, 4, '.', '');
     }
 
-    /**
-     * @param string $str
-     * @return string
-     */
-    private function cleaner(string $str)
+    private function cleaner(string $str): string
     {
         return trim(preg_replace('/\s\s+/', ' ', $str));
     }
-
-
 }

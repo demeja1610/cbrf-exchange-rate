@@ -1,28 +1,32 @@
 {
-    "name": "drandin/exchange-rate",
-    "description": "Exchange rate of the Central Bank of the Russian Federation. Currency converter. Getting data from the Central Bank's website cbr.ru",
-    "keywords": [
-        "Exchange rate",
-        "Central Bank of the Russian Federation",
-        "cbr.ru",
-        "Currency converter",
-        "PHP",
-        "Currency"
-    ],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Igor Drandin",
-            "email": "idrandin@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "autoload": {
-        "psr-4": {
-            "CentralBankRussian\\ExchangeRate\\": "src/"
-        }
+  "name": "demeja16/cbrf-exchange-rate",
+  "description": "Exchange rate of the Central Bank of the Russian Federation. Currency converter. Getting data from the Central Bank's website cbr.ru",
+  "keywords": [
+    "Exchange rate",
+    "Central Bank of the Russian Federation",
+    "cbr.ru",
+    "Currency converter",
+    "PHP",
+    "Currency"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Igor Drandin",
+      "email": "idrandin@gmail.com"
     },
-    "require": {
-        "php": "^7.3"
+    {
+      "name": "Nikita Malkin",
+      "email": "demeja16@gmail.com"
     }
+  ],
+  "minimum-stability": "dev",
+  "autoload": {
+    "psr-4": {
+      "Demeja16\\CBRFExchangeRate\\": "src/"
+    }
+  },
+  "require": {
+    "php": "^8.1"
+  }
 }

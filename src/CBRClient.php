@@ -1,37 +1,22 @@
 <?php
 
-namespace CentralBankRussian\ExchangeRate;
+namespace Demeja16\ExchangeRate;
 
 use DateTime;
 use SoapClient;
 use SoapFault;
 
 /**
- * Class CBRClient
- * @package Drandin\ExchangeRate\Models
+ * @throws SoapFault
  */
 final class CBRClient
 {
-    /**
-     * @var SoapClient
-     */
-    private $soapClient;
-
-    /**
-     * @var array|string[]
-     */
-    private $options = [
+    private SoapClient $soapClient;
+    private array $options = [
         'version' => 'SOAP_1_2'
     ];
 
-    /**
-     * Client constructor.
-     *
-     * CBRClient constructor.
-     * @param array|null $options
-     * @throws SoapFault
-     */
-    public function __construct(array $options = null)
+    public function __construct(?array $options = null)
     {
         if (is_array($options)) {
             $this->options = $options;
@@ -40,11 +25,7 @@ final class CBRClient
         $this->createSoapClient();
     }
 
-    /**
-     * @param DateTime $date
-     * @return mixed
-     */
-    public function getExchangeRate(DateTime $date)
+    public function getExchangeRate(DateTime $date): mixed
     {
         $method = CentralBankRussian::METHOD_GET_EXCHANGE_RATE;
 
@@ -55,29 +36,21 @@ final class CBRClient
 
     /**
      * Перечень ежедневных валют
-     *
-     * @return mixed
      */
-    public function getCurrencyCodesDaily()
+    public function getCurrencyCodesDaily(): mixed
     {
         return $this->getCurrencyCodes(false);
     }
 
     /**
      * Перечень ежемесячных валют
-     *
-     * @return mixed
      */
-    public function getCurrencyCodesMonthly()
+    public function getCurrencyCodesMonthly(): mixed
     {
         return $this->getCurrencyCodes(true);
     }
 
-    /**
-     * @param bool $type
-     * @return mixed
-     */
-    private function getCurrencyCodes(bool $type)
+    private function getCurrencyCodes(bool $type): mixed
     {
         $method = CentralBankRussian::METHOD_GET_CURRENCY_CODES;
 
@@ -87,18 +60,14 @@ final class CBRClient
     }
 
     /**
-     * @return SoapClient
      * @throws SoapFault
      */
     private function createSoapClient(): SoapClient
     {
         if ($this->soapClient === null) {
-            $this->soapClient = new SoapClient(CentralBankRussian::WSDL, [
-                'version' => 'SOAP_1_2'
-            ]);
+            $this->soapClient = new SoapClient(CentralBankRussian::WSDL, $this->options);
         }
 
         return $this->soapClient;
     }
-
 }

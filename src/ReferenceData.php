@@ -1,27 +1,16 @@
 <?php
 
-namespace CentralBankRussian\ExchangeRate;
+namespace Demeja16\ExchangeRate;
 
-use CentralBankRussian\ExchangeRate\Collections\CurrencyCollection;
-use CentralBankRussian\ExchangeRate\Exceptions\ExceptionIncorrectData;
-use CentralBankRussian\ExchangeRate\Models\Currency;
+use Demeja16\CBRFExchangeRate\Collections\CurrencyCollection;
+use Demeja16\CBRFExchangeRate\Exceptions\ExceptionIncorrectData;
+use Demeja16\CBRFExchangeRate\Models\Currency;
 use SimpleXMLElement;
 
-/**
- * Class ReferenceData
- * @package Drandin\ExchangeRate
- */
 final class ReferenceData
 {
-    /**
-     * @var CBRClient
-     */
-    private $CBRClient;
+    private CBRClient $CBRClient;
 
-    /**
-     * ExchangeRate constructor.
-     * @param CBRClient $CBRClient
-     */
     public function __construct(CBRClient $CBRClient)
     {
         $this->CBRClient = $CBRClient;
@@ -29,8 +18,7 @@ final class ReferenceData
 
     /**
      * Перечень ежедневных валют
-     *
-     * @return CurrencyCollection
+     * 
      * @throws ExceptionIncorrectData
      */
     public function getCurrencyCodesDaily(): CurrencyCollection
@@ -41,7 +29,6 @@ final class ReferenceData
     /**
      * Перечень ежемесячных валют
      *
-     * @return CurrencyCollection
      * @throws ExceptionIncorrectData
      */
     public function getCurrencyCodesMonthly(): CurrencyCollection
@@ -50,11 +37,9 @@ final class ReferenceData
     }
 
     /**
-     * @param $res
-     * @return CurrencyCollection
      * @throws ExceptionIncorrectData
      */
-    private function createCollection($res): CurrencyCollection
+    private function createCollection(mixed $res): CurrencyCollection
     {
         $currenciesElement = new SimpleXMLElement($res->EnumValutesResult->any);
 
@@ -71,7 +56,6 @@ final class ReferenceData
         $currencyCollection = new CurrencyCollection;
 
         foreach ($list as $item) {
-
             /**
              * таблица содержит поля:
              * Vcode — Внутренний код валюты
@@ -109,5 +93,4 @@ final class ReferenceData
 
         return $currencyCollection;
     }
-
 }

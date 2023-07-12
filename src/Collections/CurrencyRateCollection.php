@@ -1,79 +1,49 @@
 <?php
 
-namespace CentralBankRussian\ExchangeRate\Collections;
+namespace Demeja16\CBRFExchangeRate\Collections;
 
-use CentralBankRussian\ExchangeRate\Models\CurrencyRate;
+use Demeja16\CBRFExchangeRate\Models\CurrencyRate;
 use Iterator;
 
-/**
- * Class CurrencyRateCollection
- * @package Drandin\ExchangeRate\Collections
- */
 class CurrencyRateCollection implements Iterator
 {
-    /**
-     * @var array
-     */
-    private $currencyRates = [];
+    private array $currencyRates = [];
 
-    /**
-     * @param CurrencyRate $currencyRate
-     */
-    public function add(CurrencyRate $currencyRate)
+    public function add(CurrencyRate $currencyRate): void
     {
         $this->currencyRates[$currencyRate->getSymbolCode()] = $currencyRate;
     }
 
-    /**
-     * @return CurrencyRate|false
-     */
-    public function current()
+    public function current(): CurrencyRate|false
     {
         return current($this->currencyRates);
     }
 
-    /**
-     * @return CurrencyRate|false
-     */
-    public function next()
+    public function next(): void
     {
-        return next($this->currencyRates);
+        next($this->currencyRates);
     }
 
-    /**
-     * @return string
-     */
     public function key(): string
     {
         return (string) key($this->currencyRates);
     }
 
-    /**
-     * @return bool
-     */
     public function valid(): bool
     {
         return key($this->currencyRates) !== null;
     }
-
 
     public function rewind(): void
     {
         reset($this->currencyRates);
     }
 
-    /**
-     * @return int
-     */
     public function count(): int
     {
         return count($this->currencyRates);
     }
 
-    /**
-     * @param string $symbolCode
-     * @return CurrencyRate|null
-     */
     public function getCurrencyRateBySymbolCode(string $symbolCode): ?CurrencyRate
     {
         return $this->currencyRates[$symbolCode] ?? null;
