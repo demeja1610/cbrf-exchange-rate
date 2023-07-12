@@ -22,7 +22,10 @@ final class CBRClient
             $this->options = $options;
         }
 
-        $this->createSoapClient();
+        $this->soapClient = new SoapClient(
+            CentralBankRussian::WSDL,
+            $this->options
+        );
     }
 
     public function getExchangeRate(DateTime $date): mixed
@@ -57,17 +60,5 @@ final class CBRClient
         return $this->soapClient->$method([
             'Seld' => $type
         ]);
-    }
-
-    /**
-     * @throws SoapFault
-     */
-    private function createSoapClient(): SoapClient
-    {
-        if ($this->soapClient === null) {
-            $this->soapClient = new SoapClient(CentralBankRussian::WSDL, $this->options);
-        }
-
-        return $this->soapClient;
     }
 }
