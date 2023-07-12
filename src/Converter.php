@@ -2,9 +2,9 @@
 
 namespace Demeja1610\CBRFExchangeRate;
 
+use DateTime;
 use Demeja1610\CBRFExchangeRate\Exceptions\ExceptionIncorrectData;
 use Demeja1610\CBRFExchangeRate\Exceptions\ExceptionInvalidParameter;
-use DateTime;
 
 final class Converter
 {

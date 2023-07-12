@@ -2,8 +2,8 @@
 
 namespace Demeja1610\CBRFExchangeRate\Collections;
 
-use Demeja1610\CBRFExchangeRate\Models\Currency;
 use Iterator;
+use Demeja1610\CBRFExchangeRate\Models\Currency;
 
 class CurrencyCollection implements Iterator
 {

@@ -3,8 +3,8 @@
 namespace Demeja1610\CBRFExchangeRate;
 
 use DateTime;
-use SoapClient;
 use SoapFault;
+use SoapClient;
 
 /**
  * @throws SoapFault

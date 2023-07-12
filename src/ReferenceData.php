@@ -2,10 +2,10 @@
 
 namespace Demeja1610\CBRFExchangeRate;
 
+use SimpleXMLElement;
+use Demeja1610\CBRFExchangeRate\Models\Currency;
 use Demeja1610\CBRFExchangeRate\Collections\CurrencyCollection;
 use Demeja1610\CBRFExchangeRate\Exceptions\ExceptionIncorrectData;
-use Demeja1610\CBRFExchangeRate\Models\Currency;
-use SimpleXMLElement;
 
 final class ReferenceData
 {

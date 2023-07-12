@@ -2,12 +2,12 @@
 
 namespace Demeja1610\CBRFExchangeRate;
 
-use Demeja1610\CBRFExchangeRate\Exceptions\ExceptionIncorrectData;
-use Demeja1610\CBRFExchangeRate\Exceptions\ExceptionInvalidParameter;
 use DateTime;
-use Demeja1610\CBRFExchangeRate\Collections\CurrencyRateCollection;
-use Demeja1610\CBRFExchangeRate\Models\CurrencyRate;
 use SimpleXMLElement;
+use Demeja1610\CBRFExchangeRate\Models\CurrencyRate;
+use Demeja1610\CBRFExchangeRate\Exceptions\ExceptionIncorrectData;
+use Demeja1610\CBRFExchangeRate\Collections\CurrencyRateCollection;
+use Demeja1610\CBRFExchangeRate\Exceptions\ExceptionInvalidParameter;
 
 final class ExchangeRate
 {

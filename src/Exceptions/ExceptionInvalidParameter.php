@@ -2,8 +2,8 @@
 
 namespace Demeja1610\CBRFExchangeRate\Exceptions;
 
-use RuntimeException;
 use Throwable;
+use RuntimeException;
 
 class ExceptionInvalidParameter extends RuntimeException
 {
