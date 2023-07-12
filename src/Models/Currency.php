@@ -1,6 +1,6 @@
 <?php
 
-namespace Demeja16\CBRFExchangeRate\Models;
+namespace Demeja1610\CBRFExchangeRate\Models;
 
 final class Currency
 {

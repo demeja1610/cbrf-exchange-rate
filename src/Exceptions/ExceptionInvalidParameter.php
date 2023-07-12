@@ -1,6 +1,6 @@
 <?php
 
-namespace Demeja16\CBRFExchangeRate\Exceptions;
+namespace Demeja1610\CBRFExchangeRate\Exceptions;
 
 use RuntimeException;
 use Throwable;

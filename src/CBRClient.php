@@ -1,6 +1,6 @@
 <?php
 
-namespace Demeja16\ExchangeRate;
+namespace Demeja1610\ExchangeRate;
 
 use DateTime;
 use SoapClient;

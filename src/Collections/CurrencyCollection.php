@@ -1,8 +1,8 @@
 <?php
 
-namespace Demeja16\CBRFExchangeRate\Collections;
+namespace Demeja1610\CBRFExchangeRate\Collections;
 
-use Demeja16\CBRFExchangeRate\Models\Currency;
+use Demeja1610\CBRFExchangeRate\Models\Currency;
 use Iterator;
 
 class CurrencyCollection implements Iterator

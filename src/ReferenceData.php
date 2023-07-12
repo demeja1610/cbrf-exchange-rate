@@ -1,10 +1,10 @@
 <?php
 
-namespace Demeja16\ExchangeRate;
+namespace Demeja1610\ExchangeRate;
 
-use Demeja16\CBRFExchangeRate\Collections\CurrencyCollection;
-use Demeja16\CBRFExchangeRate\Exceptions\ExceptionIncorrectData;
-use Demeja16\CBRFExchangeRate\Models\Currency;
+use Demeja1610\CBRFExchangeRate\Collections\CurrencyCollection;
+use Demeja1610\CBRFExchangeRate\Exceptions\ExceptionIncorrectData;
+use Demeja1610\CBRFExchangeRate\Models\Currency;
 use SimpleXMLElement;
 
 final class ReferenceData

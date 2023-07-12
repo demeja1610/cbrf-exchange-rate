@@ -1,8 +1,8 @@
 <?php
 
-namespace Demeja16\CBRFExchangeRate\Models;
+namespace Demeja1610\CBRFExchangeRate\Models;
 
-use Demeja16\CBRFExchangeRate\Exceptions\ExceptionInvalidParameter;
+use Demeja1610\CBRFExchangeRate\Exceptions\ExceptionInvalidParameter;
 
 final class CurrencyRate
 {

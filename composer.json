@@ -23,7 +23,7 @@
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "Demeja16\\CBRFExchangeRate\\": "src/"
+      "Demeja1610\\CBRFExchangeRate\\": "src/"
     }
   },
   "require": {

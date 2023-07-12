@@ -1,12 +1,12 @@
 <?php
 
-namespace Demeja16\ExchangeRate;
+namespace Demeja1610\ExchangeRate;
 
-use Demeja16\CBRFExchangeRate\Exceptions\ExceptionIncorrectData;
-use Demeja16\CBRFExchangeRate\Exceptions\ExceptionInvalidParameter;
+use Demeja1610\CBRFExchangeRate\Exceptions\ExceptionIncorrectData;
+use Demeja1610\CBRFExchangeRate\Exceptions\ExceptionInvalidParameter;
 use DateTime;
-use Demeja16\CBRFExchangeRate\Collections\CurrencyRateCollection;
-use Demeja16\CBRFExchangeRate\Models\CurrencyRate;
+use Demeja1610\CBRFExchangeRate\Collections\CurrencyRateCollection;
+use Demeja1610\CBRFExchangeRate\Models\CurrencyRate;
 use SimpleXMLElement;
 
 final class ExchangeRate

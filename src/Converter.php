@@ -1,9 +1,9 @@
 <?php
 
-namespace Demeja16\ExchangeRate;
+namespace Demeja1610\ExchangeRate;
 
-use Demeja16\CBRFExchangeRate\Exceptions\ExceptionIncorrectData;
-use Demeja16\CBRFExchangeRate\Exceptions\ExceptionInvalidParameter;
+use Demeja1610\CBRFExchangeRate\Exceptions\ExceptionIncorrectData;
+use Demeja1610\CBRFExchangeRate\Exceptions\ExceptionInvalidParameter;
 use DateTime;
 
 final class Converter
